@@ -1,0 +1,100 @@
+import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// ---- Replace with your correct images ----
+import office from "../../assets/office.jpg";
+import fitness from "../../assets/fitness.jpg";
+import education from "../../assets/education.jpg";
+import hospitality from "../../assets/hospitality.jpg";
+import healthcare from "../../assets/healthcare.jpg";
+import retail from "../../assets/retail.jpg";
+
+const spacesData = [
+  {
+    img: office,
+    title: "OFFICE INTERIORS",
+    desc: "Our Office Interiors Blend Functionality With Style — Creating Spaces Where Teams Thrive.",
+  },
+  {
+    img: fitness,
+    title: "FITNESS INTERIORS",
+    desc: "Our Fitness Interiors Are Designed To Inspire Discipline, Focus, And Well-Being.",
+  },
+  {
+    img: education,
+    title: "EDUCATIONAL INTERIORS",
+    desc: "We Design Learning Environments That Inspire Focus, Creativity, And Collaboration.",
+  },
+  {
+    img: hospitality,
+    title: "HOSPITALITY INTERIOR",
+    desc: "From Cozy Cafés To Luxury Hotels, Our Interiors Blend Comfort, Style, And Brand Identity.",
+  },
+  {
+    img: healthcare,
+    title: "HEALTHCARE INTERIORS",
+    desc: "We Design Healing Spaces That Prioritize Comfort, Cleanliness, And Functionality.",
+  },
+  {
+    img: retail,
+    title: "RETAIL INTERIORS",
+    desc: "We Create Retail Spaces That Attract, Engage, And Convert — With Style And Strategy.",
+  },
+];
+
+const BusinessShowcase = () => {
+  React.useEffect(() => {
+    AOS.init({ duration: 900, once: true });
+  }, []);
+
+  return (
+    <section className="max-w-7xl mx-auto px-6 py-16 text-center font-family">
+
+      {/* Heading */}
+      <h2 className="text-3xl md:text-4xl font-bold mb-3">
+        Designing Spaces That Reflect You
+      </h2>
+
+      {/* Subheading */}
+      <p className="text-gray-500 max-w-3xl mx-auto leading-6 mb-12">
+        Our Team Designs With Purpose And Builds With Passion, Delivering Spaces
+        That Feel As Good As They Look.
+      </p>
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        {spacesData.map((item, index) => (
+          <div
+            key={index}
+            className="relative cursor-pointer flex flex-col items-center"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            {/* Image */}
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-full h-72 object-cover rounded-xl shadow-md"
+            />
+
+            {/* Floating Content Box */}
+            <div
+              className="bg-white w-[90%] h-[40%] mx-auto rounded-xl shadow-lg p-4 text-center
+              -mt-6 relative z-10 hover:shadow-2xl transition"
+            >
+              <h3 className="font-semibold text-sm text-[#014366] tracking-wide uppercase">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default BusinessShowcase;
